@@ -124,7 +124,8 @@ void connectNeighbors(ArrayList<Node> list) {
 
     Link dj = new Link(left, closeNeighbor);
     dj.setStroke(255);
-    dj.setLength(globLength);
+    //dj.setLength(globLength);
+    dj.calculateLength();
     dj.setFrequency(globFreq);
     dj.setDamping(globDamp);
     joints.add(dj);

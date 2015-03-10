@@ -15,7 +15,7 @@ boolean mouseReleased = false;
 boolean paused = false;
 
 FBody prev;
-float globFreq = 3;
+float globFreq = 0.75;
 float globDamp = 0;
 float globLength = 50;
 
@@ -59,8 +59,7 @@ void createMinim() {
 
   minim = new Minim(this);
   //minim.debugOn();
-  // use the getLineOut method of the Minim object to get an AudioOutput object
-  out = minim.getLineOut();
+  out = minim.getLineOut(Minim.STEREO, 2048);
 }
 
 void draw() {
