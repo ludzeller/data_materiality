@@ -5,11 +5,12 @@ class Node extends FCircle implements ModulationSource {
 
   Node (float size) {
     super(size);
-    res = new Resonator(this);
+    //res = new Resonator(this);
   }
   
   void destroy() {
-    res.destroy();
+    //res.destroy();
+    res = null;
   }
 
   void draw(PGraphics g) {
@@ -17,7 +18,7 @@ class Node extends FCircle implements ModulationSource {
     ellipse(0, 0, this.getSize(), this.getSize());
     //text( this.vel(), this.getSize() * 0.5 + 5, this.getSize() * 0.5);
     
-    res.update();
+    //res.update();
 
     noFill();
     stroke(255,0,0);

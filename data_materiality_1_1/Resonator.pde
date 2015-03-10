@@ -59,6 +59,7 @@ class Resonator {
       pan = null;
     } 
     catch(Exception e) {
+      println("Problem while destroying Resonator");
     }
   }
 

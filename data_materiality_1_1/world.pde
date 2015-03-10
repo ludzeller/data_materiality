@@ -1,21 +1,25 @@
 
 void reset() {
   
+  world.clear();
+  
   for (int i = 0; i < balls.size (); i++) {
     balls.get(i).destroy();
+    //balls.remove(i);
   }
   
   for (int i = 0; i < joints.size (); i++) {
     joints.get(i).destroy();
+    //joints.remove(i);
   }
   
   
   joints = new ArrayList<Link>();
   anchors = new ArrayList<Node>();
   balls = new ArrayList<Node>();
-  createMinim();
+  //createMinim();
   
-  world.clear();
+  
   //world.setEdges();
 
   float padding = anchorSize/2;
@@ -138,9 +142,19 @@ boolean isConnected(FBody left, FBody right) {
 }
 
 void shockWave(){
+  
   for ( int j = 0; j < balls.size (); j++ ) {
-    if(dist(mouseX, mouseY, balls.get(j).getX(), balls.get(j).getY()) < 300 ) {
-      balls.get(j).addImpulse( (balls.get(j).getX() - mouseX ) * 5 , ( balls.get(j).getY() - mouseY ) * 5); 
+    PVector vec = new PVector( balls.get(j).getX() - mouseX, balls.get(j).getY() - mouseY );
+    
+    if( vec.mag() < range ) {
+      
+      //PVector vec2 = vec.get();
+      //vec2.normalize();
+      //vec2.mult(constrain( power - vec.mag(), 0, power));
+      vec.normalize();
+      vec.mult(power);
+      balls.get(j).addImpulse( vec.x, vec.y);
+      
     }
   }
 }

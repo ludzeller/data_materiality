@@ -6,7 +6,7 @@ class Link extends FDistanceJoint implements ModulationSource {
 
   Link (FBody b1, FBody b2) {
     super(b1, b2);
-    res = new Resonator(this);
+    res = new Resonator(this, Waves.SINE);
   }
   
   void destroy() {
@@ -48,7 +48,8 @@ class Link extends FDistanceJoint implements ModulationSource {
   }
   
   float pitch() {
-    return 440 + map(this.length(), 0, 500, 0, 440);
+    //return 440 + map(this.length(), 0, 500, 0, 440);
+    return map(this.length(), 0, 500, 800, 50);
   }
   
   float pan() {

@@ -18,6 +18,7 @@ FBody prev;
 float globFreq = 3;
 float globDamp = 0;
 float globLength = 50;
+
 ArrayList<Link> joints;
 ArrayList<Node> anchors;
 ArrayList<Node> balls;
@@ -27,6 +28,12 @@ float ballSize = 20;
 
 float probability = 15;
 int randomAmount = 15;
+
+// shockwave
+float power = 2000;
+float range = 100;
+
+boolean showHelp = false;
 
 void setup() {
 
@@ -38,38 +45,43 @@ void setup() {
   Fisica.init(this);
   world = new FWorld();
   world.setGravity(0, 0);
-  
+
 
   joints = new ArrayList<Link>();
   anchors = new ArrayList<Node>();
   balls = new ArrayList<Node>();  
 
+  createMinim();
   reset();
 }
 
 void createMinim() {
 
   minim = new Minim(this);
+  //minim.debugOn();
   // use the getLineOut method of the Minim object to get an AudioOutput object
   out = minim.getLineOut();
 }
 
 void draw() {
 
+  background(0);
 
   handleControl();
 
-  background(0);
   //fill(0,10);
   //rect(0,0,width,height);
 
-  fill(255);
-  text("Spring frequency: " + globFreq, 50, 50);
-  text("Spring damping: " + globDamp, 50, 70);
-  text("Spring length: " + globLength, 50, 90);
-  text("Link probability: " + probability, 50, 110);
-  text("Random amount: " + randomAmount, 50, 130);
-  text("Ball size: " + ballSize, 50, 150);
+  if (showHelp) {
+    fill(255);
+    text("Spring frequency: " + globFreq, 50, 50);
+    text("Spring damping: " + globDamp, 50, 70);
+    text("Spring length: " + globLength, 50, 90);
+    text("Link probability: " + probability, 50, 110);
+    text("Random amount: " + randomAmount, 50, 130);
+    text("Ball size: " + ballSize, 50, 150);
+    text("Shock power: " + power, 50, 170);
+  }
 
   if (!paused) {
     try {
