@@ -1,0 +1,60 @@
+
+class Link extends FDistanceJoint implements ModulationSource {
+  
+  Resonator res;
+  float oldLength = 0;
+
+  Link (FBody b1, FBody b2) {
+    super(b1, b2);
+    res = new Resonator(this);
+  }
+  
+  void destroy() {
+    res.destroy();
+  }
+
+  void draw(PGraphics g) {
+    
+    
+    res.update();
+    
+    preDraw(g);
+    noFill();
+    stroke(255);
+    line(this.getAnchor1X(), this.getAnchor1Y(), this.getAnchor2X(), this.getAnchor2Y() );
+    //line(0, 0, velocity(), velocity());
+    postDraw(g);
+    
+    oldLength = this.length();
+    
+  }
+  
+  float length() {
+     return dist(this.getAnchor1X(), this.getAnchor1Y(), this.getAnchor2X(), this.getAnchor2Y());
+  }
+  
+  float diffLength() {
+    return abs(this.oldLength - this.length());
+  }
+
+  float amp() {
+    return map(this.diffLength(), 0, 300, 0, 0.05);
+    //return this.getVelocityX();
+    //return this.getVelocityX(),this.getVelocityY());
+  }
+  
+  float pitch() {
+    return 440;
+  }
+  
+  float pan() {
+    return 0;
+    //return this.getX(); 
+  }
+
+  float log10 (float x) {
+    return (log(x*100) / log(10));
+  }
+
+  
+}

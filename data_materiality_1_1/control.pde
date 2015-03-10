@@ -37,7 +37,7 @@ void handleControl() {
         prev = null;
       } else {
         FBody current = world.getBody(mouseX, mouseY);
-        FDistanceJoint dj = new FDistanceJoint( prev, current );
+        Link dj = new Link( prev, current );
         dj.setStroke(255);
         dj.setLength(globLength);
         dj.setFrequency(globFreq);
@@ -120,4 +120,3 @@ void keyPressed() {
     shockWave();
   }
 }
-

@@ -1,7 +1,5 @@
 
-
 class Node extends FCircle implements ModulationSource {
-
   
   Resonator res;
 
@@ -32,9 +30,8 @@ class Node extends FCircle implements ModulationSource {
   }
   
   float amp() {
-    return map(velocity(), 0, 5000, 0, 0.05);
-    //return this.getVelocityX();
-    //return this.getVelocityX(),this.getVelocityY());
+    return 0;
+    //return map(velocity(), 0, 5000, 0, 0.05);
   }
   
   float pitch() {

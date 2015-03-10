@@ -18,7 +18,7 @@ FBody prev;
 float globFreq = 3;
 float globDamp = 0;
 float globLength = 50;
-ArrayList<FDistanceJoint> joints;
+ArrayList<Link> joints;
 ArrayList<Node> anchors;
 ArrayList<Node> balls;
 
@@ -40,7 +40,7 @@ void setup() {
   world.setGravity(0, 0);
   
 
-  joints = new ArrayList<FDistanceJoint>();
+  joints = new ArrayList<Link>();
   anchors = new ArrayList<Node>();
   balls = new ArrayList<Node>();  
 
@@ -82,4 +82,3 @@ void draw() {
   }
   world.draw();
 }
-

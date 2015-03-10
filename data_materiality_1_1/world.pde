@@ -5,7 +5,7 @@ void reset() {
     balls.get(i).destroy();
   }
   
-  joints = new ArrayList<FDistanceJoint>();
+  joints = new ArrayList<Link>();
   anchors = new ArrayList<Node>();
   balls = new ArrayList<Node>();
   createMinim();
@@ -62,7 +62,7 @@ void randomize() {
   for ( int i = 0; i < circles.size (); i++ ) {
     for ( int j = 0; j < circles.size (); j++ ) {
       if (random(100) > 100 - probability) {
-        FDistanceJoint dj = new FDistanceJoint(circles.get(i), circles.get(j));
+        Link dj = new Link(circles.get(i), circles.get(j));
         dj.setStroke(255);
         dj.setLength(globLength);
         dj.setFrequency(globFreq);
@@ -76,7 +76,7 @@ void randomize() {
   for (int i = 0; i < anchors.size (); i++) {
 
     int rand = floor(random(circles.size()));
-    FDistanceJoint dj = new FDistanceJoint(anchors.get(i), circles.get(rand));
+    Link dj = new Link(anchors.get(i), circles.get(rand));
     dj.setStroke(255);
     dj.setLength(globLength);
     dj.setFrequency(globFreq);
@@ -113,7 +113,7 @@ void connectNeighbors(ArrayList<Node> list) {
 
     if (closeNeighbor == null) continue;
 
-    FDistanceJoint dj = new FDistanceJoint(left, closeNeighbor);
+    Link dj = new Link(left, closeNeighbor);
     dj.setStroke(255);
     dj.setLength(globLength);
     dj.setFrequency(globFreq);
@@ -167,4 +167,3 @@ void updateBallSize(float size) {
     balls.get(i).setSize(size);
   }
 }
-
