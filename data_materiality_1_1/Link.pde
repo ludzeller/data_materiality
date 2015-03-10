@@ -18,7 +18,10 @@ class Link extends FDistanceJoint implements ModulationSource {
     
     res.update();
     
+    
     preDraw(g);
+    fill(255);
+    text(this.diffLength(), this.getAnchor1X(), this.getAnchor1Y());
     noFill();
     stroke(255);
     line(this.getAnchor1X(), this.getAnchor1Y(), this.getAnchor2X(), this.getAnchor2Y() );
@@ -38,18 +41,20 @@ class Link extends FDistanceJoint implements ModulationSource {
   }
 
   float amp() {
-    return map(this.diffLength(), 0, 300, 0, 0.05);
+    float val = pow(map(this.diffLength(), 0, 300, 0, 1), 0.8);
+    return map(val, 0, 1, 0, 0.2);
     //return this.getVelocityX();
     //return this.getVelocityX(),this.getVelocityY());
   }
   
   float pitch() {
-    return 440;
+    return 440 + map(this.length(), 0, 500, 0, 440);
   }
   
   float pan() {
-    return 0;
-    //return this.getX(); 
+    float val =  ( this.getAnchor1X() + this.getAnchor2X() ) / 2;
+    return map( val, 0, width, -1, 1 );
+    //return 0;
   }
 
   float log10 (float x) {

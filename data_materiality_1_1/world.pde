@@ -5,6 +5,11 @@ void reset() {
     balls.get(i).destroy();
   }
   
+  for (int i = 0; i < joints.size (); i++) {
+    joints.get(i).destroy();
+  }
+  
+  
   joints = new ArrayList<Link>();
   anchors = new ArrayList<Node>();
   balls = new ArrayList<Node>();

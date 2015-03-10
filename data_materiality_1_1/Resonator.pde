@@ -17,7 +17,7 @@ class Resonator {
 
     mod = _mod;
     
-    pan = new Pan(-1);
+    pan = new Pan(0);
     pan.patch(out);
 
     // create a sine wave Oscil, set to 440 Hz, at 0.5 amplitude
@@ -26,8 +26,9 @@ class Resonator {
     // patch the Oscil to the output
     wave.patch( pan );
 
-    //pitchline = new Line();
-    //pitchline.patch(wave.frequency);
+    pitchline = new Line();
+    pitchline.patch(wave.frequency);
+    pitchline.activate(0, 0, 0);
 
     ampline = new Line();
     ampline.patch(wave.amplitude);
@@ -35,18 +36,17 @@ class Resonator {
   }
 
   void update() {
-    //wave.setAmplitude(map(vel(), 0, 5000, 0, 1));
-    //line.setEndAmp(map(vel(), 0, 5000, 0, 1));
+    
+    float[] samples;
+    samples = pitchline.getLastValues();
+    pitchline.activate(0.1, samples[samples.length-1], mod.pitch() );
 
-    //float[] samples = pitchline.getLastValues();
-    //pitchline.activate(0.1, samples[samples.length-1], map(vel(), 0, 5000, 400, 8000) );
-
-    float [] samples = ampline.getLastValues();
+    samples = ampline.getLastValues();
     ampline.activate(0.1, samples[samples.length-1], mod.amp() );
 
     //schmitt(value());
 
-    pan.setPan(map(mod.pan(), 0, width, -1, 1));
+    pan.setPan(mod.pan());
   }
 
   void destroy() {
