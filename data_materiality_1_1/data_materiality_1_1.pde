@@ -30,8 +30,8 @@ int randomAmount = 15;
 
 void setup() {
 
-  //size( 1000, 1000, OPENGL);
-  size( 2560, 1440, OPENGL);
+  size( 1000, 1000, OPENGL);
+  //size( 2560, 1440, OPENGL);
   frameRate(3000);
   frame.setBackground(new java.awt.Color(0));
 
