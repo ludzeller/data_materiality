@@ -140,7 +140,7 @@ boolean isConnected(FBody left, FBody right) {
 void shockWave(){
   for ( int j = 0; j < balls.size (); j++ ) {
     if(dist(mouseX, mouseY, balls.get(j).getX(), balls.get(j).getY()) < 300 ) {
-      balls.get(j).addImpulse( mouseX - balls.get(j).getX() * 10 , mouseY - balls.get(j).getY() * 10); 
+      balls.get(j).addImpulse( (balls.get(j).getX() - mouseX ) * 5 , ( balls.get(j).getY() - mouseY ) * 5); 
     }
   }
 }

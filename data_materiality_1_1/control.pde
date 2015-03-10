@@ -1,6 +1,7 @@
 
 void handleControl() {
 
+  try {
   if (mouseReleased && keyPressed) {
 
     if (key == 'a') {
@@ -47,6 +48,9 @@ void handleControl() {
         prev = current; // for daisychaining
       }
     }
+  }
+  } catch( Exception E ) {
+    println("Exception while user interaction");
   }
 
   if (keyPressed) {

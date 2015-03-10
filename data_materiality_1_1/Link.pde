@@ -20,8 +20,8 @@ class Link extends FDistanceJoint implements ModulationSource {
     
     
     preDraw(g);
-    fill(255);
-    text(this.diffLength(), this.getAnchor1X(), this.getAnchor1Y());
+    //fill(255);
+    //text(this.diffLength(), this.getAnchor1X(), this.getAnchor1Y());
     noFill();
     stroke(255);
     line(this.getAnchor1X(), this.getAnchor1Y(), this.getAnchor2X(), this.getAnchor2Y() );
