@@ -15,8 +15,8 @@ boolean mouseReleased = false;
 boolean paused = false;
 
 FBody prev;
-float globFreq = 0.75;
-float globDamp = 0;
+float globFreq = 0.63;
+float globDamp = 0.01;
 float globLength = 50;
 
 ArrayList<Link> joints;
@@ -27,7 +27,7 @@ float anchorSize = 30;
 float ballSize = 20;
 
 float probability = 15;
-int randomAmount = 15;
+int randomAmount = 12;
 
 // shockwave
 float power = 2000;

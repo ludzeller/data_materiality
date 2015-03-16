@@ -41,7 +41,7 @@ class Link extends FDistanceJoint implements ModulationSource {
   }
 
   float amp() {
-    float val = pow(map(this.diffLength(), 0, 300, 0, 1), 0.8);
+    float val = pow(map(this.diffLength(), 0, 300, 0, 1), 1);
     return map(val, 0, 1, 0, 0.3);
     //return this.getVelocityX();
     //return this.getVelocityX(),this.getVelocityY());
@@ -49,7 +49,7 @@ class Link extends FDistanceJoint implements ModulationSource {
   
   float pitch() {
     //return 440 + map(this.length(), 0, 500, 0, 440);
-    return map(this.length(), 0, 500, 1000, 50);
+    return map(this.length(), 0, 500, 50, 1000);
   }
   
   float pan() {
